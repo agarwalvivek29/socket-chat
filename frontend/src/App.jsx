@@ -7,7 +7,8 @@ import { chatsAtom, currentChatAtom, registerAtom, updateChatAtom, userAtom, use
 import { useEffect } from "react"
 import axios from "axios"
 
-export const URL = 'http://localhost:3000';
+// export const URL = 'http://localhost:3000';
+export const URL = 'https://socket-chat-wuon.onrender.com';
 
 function App() {
 
