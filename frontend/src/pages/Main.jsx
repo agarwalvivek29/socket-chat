@@ -10,7 +10,7 @@ function Main(){
     const user = useRecoilValue(userAtom);    
 
     return(
-        <div className="w-screen md:w-3/4">
+        <div className="w-screen flex flex-col items-center justify-center">
             <div className="overflow-x-hidden">
                 <div>
                     <div className="text-center text-xl p-2 flex">{user}'s Chats</div>
@@ -23,7 +23,6 @@ function Main(){
                 </div>
             </div>
         </div>
-
     )
 }
 

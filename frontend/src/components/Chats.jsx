@@ -1,5 +1,6 @@
 import { useRecoilState, useRecoilValue } from 'recoil'
 import { currentChatAtom, chatsAtom, userAtom } from '../store'
+import Icon from './Icons';
 function Chats(){
     const [currentChat, setCurrentChat] = useRecoilState(currentChatAtom);
     const chats = useRecoilValue(chatsAtom);
@@ -8,11 +9,11 @@ function Chats(){
     let normalStyle = 'p-2 cursor-pointer'
     let highlightedStyle = 'p-2 cursor-pointer bg-slate-300'
     return(
-        <div className='m-2 border-black border md:w-1/3 text-center'>
+        <div className='m-2 border-black border min-w-[30vh] lg:1/3 text-center'>
             <div className=''>
                 <div className='p-4 text-lg font-medium border-black border'>Chats</div>
                 <div className='max-h-[30vh] md:max-h-[79vh] overflow-y-auto'>
-                    {Array.isArray(chats) && chats.map((chat)=>{
+                    {chats.length > 0 ? Array.isArray(chats) && chats.map((chat)=>{
                         num+=1;
                         // console.log(chat);
                         return (
@@ -40,7 +41,16 @@ function Chats(){
                                 {/* <div>{ chat.unread===0 ? "" : chat.unread }</div> */}
                             </div>
                         )
-                    })}
+                    })
+                    :
+                    <div className='flex-col items-center'>
+                        <div className='flex justify-center items-center'>Use the <Icon what='addUserLarge'/><div>Icon</div></div>
+                        <div>To Create a Chat with other users</div>
+                        <div>or</div>
+                        <div>To Create / Join a Room</div>                        
+                    </div>             
+                
+                }
                 </div>
             </div>
         </div>

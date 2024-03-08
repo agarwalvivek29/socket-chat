@@ -49,6 +49,9 @@ function App() {
         <ContextProvider>
             {register ? loading ? <Loader /> : <Main /> : <Register />}
             <ReactNotifications />
+            <div className="absolute bottom-1 font-light flex justify-center w-screen">
+                <div>Thanks for exploring! 🚀, Project by <a href="https://www.linkedin.com/in/agarwalvivek29" className="font-medium">Vivek Agarwal</a></div>
+            </div>
         </ContextProvider>
     )
 }

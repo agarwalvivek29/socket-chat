@@ -44,8 +44,8 @@ function Users(){
     return(
         <div>
             {isShown && <div className='m-2 fixed inset-0 flex flex-col items-center justify-center bg-white' >
-                <div className='md:w-1/4 h-2/3 flex-col items-center border-black border-2 overflow-y-auto'>
-                <div className='p-4 border border-black'>Users</div>
+                <div className='md:w-1/4 h-2/3 flex-col items-center border-black border-2 overflow-y-auto text-center'>
+                <div className='p-4 border border-black text-center'>Users</div>
                 <Search setSearch={setSearch}/>
                 <CreateRoom />
                 <JoinRoom />
@@ -56,7 +56,7 @@ function Users(){
                             await findChat(user.username);
                             setIsShown(false);
                         }}
-                        className='p-2 cursor-pointer'
+                        className='p-2 cursor-pointer hover:bg-slate-200'
                         >{user.username}</div>
                     )
                 })

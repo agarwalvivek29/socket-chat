@@ -7,7 +7,7 @@ function Message({data}){
     const user = useRecoilValue(userAtom);
     // console.log(data);
     return(
-        <div className="m-3 p-2">
+        <div className="m-2 p-2">
             <div className={ data.sender === user ? "text-right" : "text-left" }>
                 <div className="p-1 font-light text-sm">{data.sender}</div>
                 <div className="text-lg p-1">{data.message}</div>
@@ -30,7 +30,7 @@ function MessageArray(){
     },[currentChat]);
 
     return(
-        <div className="max-h-[40vh] md:max-h-[75vh] overflow-y-auto">
+        <div className="max-h-[40vh] md:max-h-[69vh] overflow-y-auto">
             {
                 currentChat.messages.length > 0 ? (
                     currentChat.messages.map((message)=>{
@@ -99,17 +99,22 @@ function Messages(){
     },[chats])
 
     return (
-        currentChat ? (
-        <div className="m-2 border-black border md:w-2/3 flex flex-col">
+        <div className="m-2 border-black border md:min-w-[60vh] flex flex-col   min-h-[50vh] ">
             <div className="p-4 border-black border text-xl text-center">{currentChat ? currentChat.room ? '🗯 ' + currentChat.room : currentChat.owners[0] ===user ? currentChat.owners[1] : currentChat.owners[0] : "Messages"}</div>
-            {currentChat.room ? <div className="p-3">Members : {JSON.stringify(currentChat.owners)}</div> : ""}
-            <MessageArray />
-            <div className="flex-grow"></div>
+            {}
+            {
+                currentChat ? (
+                    <>
+                        {currentChat.room ? <div className="p-3">Members : {JSON.stringify(currentChat.owners)}</div> : ""}
+                        <MessageArray />
+                        <div className="flex-grow"></div>
+                    </>
+                )
+                :
+                <div className="flex-grow flex-col items-center flex justify-center">Select a Chat to View....</div>
+            }
             <MessageInput />
         </div>
-        )
-        :
-        ("")
     )
 }
 
