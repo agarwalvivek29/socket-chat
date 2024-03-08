@@ -4,8 +4,9 @@ import ContextProvider from "./SocketContext"
 import Main from "./pages/Main"
 import Register from "./pages/Register"
 import { chatsAtom, currentChatAtom, registerAtom, updateChatAtom, userAtom, usersAtom } from "./store"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import axios from "axios"
+import Loader from "./components/Loader";
 
 // export const URL = 'http://localhost:3000';
 export const URL = 'https://socket-chat-wuon.onrender.com';
@@ -17,6 +18,7 @@ function App() {
     const user = useRecoilValue(userAtom);
     const register = useRecoilValue(registerAtom);
     const currentChat = useRecoilValue(currentChatAtom);
+    const [loading,setLoading] = useState(true);
 
     useEffect(()=>{
         async function init(){
@@ -31,6 +33,7 @@ function App() {
                     })
                     console.log(res1.data);
                     setChats(res1.data);
+                    setLoading(false);
                 }
                 catch(e){
                     console.log('init',e);
@@ -44,7 +47,7 @@ function App() {
 
     return (
         <ContextProvider>
-            {register ? <Main /> : <Register />}
+            {register ? loading ? <Loader /> : <Main /> : <Register />}
             <ReactNotifications />
         </ContextProvider>
     )

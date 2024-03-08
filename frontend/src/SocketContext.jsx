@@ -8,7 +8,7 @@ import { Store } from "react-notifications-component";
 
 export const SocketContext = createContext();
 
-const socket = io('http://localhost:3000');
+const socket = io('https://socket-chat-wuon.onrender.com');
 
 function ContextProvider({children}){
     const [socketId, setSocketId] = useRecoilState(socketIdAtom);

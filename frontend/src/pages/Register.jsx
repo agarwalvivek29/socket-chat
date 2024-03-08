@@ -2,6 +2,9 @@ import { useRecoilState } from "recoil";
 import { registerAtom, userAtom } from "../store";
 import { useState, useContext } from "react";
 import { SocketContext } from "../SocketContext";
+import { z } from 'zod';
+
+const myschema = z.string().min(3);
 
 function Register(){
     const [register,setRegister] = useRecoilState(registerAtom);
@@ -18,11 +21,19 @@ function Register(){
                         setUser(e.target.value);
                     }} />
                 </div>
-                <button className="p-3 text-center " onClick={()=>{
-                    registerUser({
-                        username : user
-                    });
-                    setRegister(true)
+                <button className="p-3 text-center " 
+                    onClick={()=>{
+                    if(myschema.safeParse(user).success){
+                        registerUser({
+                            username : user
+                        });
+                        setRegister(true);
+                    }
+                    else{
+                        alert('Username should be atleast 3 characters');
+                    }   
+                    console.log(user);
+                    
                 }}>Register</button>
             </div>
         </div>
