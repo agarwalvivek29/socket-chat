@@ -113,7 +113,16 @@ io.on('connection', (socket) => {
                 chatId : res._id,
                 username : user.username
             });
+            socket.to(owners[i].socketId).emit('message',{
+                chatId : res._id,
+                message : {
+                    sender : 'server',
+                    time : new Date(),
+                    message : `${user.username} joined the chat`
+                }
+            });
         }
+
     })
 
     socket.on('disconnect',()=>{

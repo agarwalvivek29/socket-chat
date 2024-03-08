@@ -9,8 +9,9 @@ function Message({data}){
     return(
         <div className="m-3 p-2">
             <div className={ data.sender === user ? "text-right" : "text-left" }>
-                <div className="p-1 font-light">{data.sender}</div>
+                <div className="p-1 font-light text-sm">{data.sender}</div>
                 <div className="text-lg p-1">{data.message}</div>
+                <div className="text-xs font-light">{data.time.substring(0,10) + " " + data.time.substring(11,16)}</div>
             </div>
         </div>
     )
