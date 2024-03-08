@@ -13,14 +13,14 @@ function Main(){
         <div className="w-screen md:w-3/4">
             <div className="overflow-x-hidden">
                 <div>
-                    <div className="text-center text-xl p-2">{user}'s Chats</div>
+                    <div className="text-center text-xl p-2 flex">{user}'s Chats</div>
                     <Users />
                     <div className="md:flex">
                         <Chats />
                         <Messages />
                         <div className="w-20"></div>
                     </div>
-                 </div>
+                </div>
             </div>
         </div>
 

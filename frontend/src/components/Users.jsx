@@ -44,7 +44,7 @@ function Users(){
     return(
         <div>
             {isShown && <div className='m-2 fixed inset-0 flex flex-col items-center justify-center bg-white' >
-                <div className='w-1/4 h-2/3 flex-col items-center border-black border-2 overflow-y-auto'>
+                <div className='md:w-1/4 h-2/3 flex-col items-center border-black border-2 overflow-y-auto'>
                 <div className='p-4 border border-black'>Users</div>
                 <Search setSearch={setSearch}/>
                 <CreateRoom />
@@ -77,12 +77,12 @@ function Users(){
                 }
             </div>
             </div>}
-            <div className='absolute top-0 right-0 cursor-pointer m-5' onClick={()=>{
+            <div className='absolute top-0 right-0 cursor-pointer md:m-5 m-2' onClick={()=>{
                 setIsShown(!isShown);
             }}>
                 <Icon what="addUserLarge" />
             </div>
-            <div className='absolute top-20 right-0 cursor-pointer m-5' onClick={()=>{
+            <div className='absolute md:top-20 md:right-0 top-0 right-14 cursor-pointer md:m-5 m-2' onClick={()=>{
                 window.location.reload();
             }}>
                 <Icon what="exitLarge" />

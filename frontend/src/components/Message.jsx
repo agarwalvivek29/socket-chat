@@ -56,6 +56,7 @@ export function MessageInput(){
     const [message,setMessage] = useState('');
     const { sendMessage } = useContext(SocketContext);
     const user = useRecoilValue(userAtom)
+    const inputRef = useRef(null);
 
     function handleSend(){
         sendMessage({
@@ -67,11 +68,12 @@ export function MessageInput(){
             owners : currentChat.owners
         });
         setMessage('');
+        inputRef.current.value='';
     }
 
     return(
         <div className="border-black border-2 flex">
-            <input type="text-area" placeholder="message" className="p-5 w-full outline-none resize-none h-auto" onChange={(e)=>{
+            <input type="text-area" placeholder="message" className="p-5 w-full outline-none resize-none h-auto" ref={inputRef} onChange={(e)=>{
                 setMessage(e.target.value)
             }}
             />
